@@ -20,3 +20,36 @@
 #control>h1{
     color: white;
 }
+
+.info{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(0, 0, 50, 0.507);
+    color: white;
+    font-size: 100px;
+    border-radius: 50%;
+}
+.info:hover{
+    background: white;
+    cursor: pointer;
+}
+.info:hover::before{
+    display: block;
+    bottom: 30px;
+}
+.info::before{
+    content: "Hola soy un punto en el mapa :D";
+    font-size: 10pt;
+    color: brown;
+    display: none;
+    position: absolute;
+    padding: 10px;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    width: 90px;
+    height: 120px;
+    transition: all .3s ease
+}

@@ -21,7 +21,7 @@
 // renderer.render( scene, camera );
 
 // global variables
-var renderer;
+var renderer, labelRenderer;
 var scene;
 var camera;
 var control;
@@ -36,6 +36,13 @@ function init() {
     renderer = new THREE.WebGLRenderer();
     renderer.setClearColor(0x052222, 0);
     renderer.setSize(window.innerWidth, window.innerHeight);
+
+    labelRenderer = new THREE.CSS2DRenderer();
+    labelRenderer.setSize( window.innerWidth, window.innerHeight );
+    labelRenderer.domElement.style.position = 'absolute';
+    labelRenderer.domElement.style.top = 0;
+    document.body.appendChild( labelRenderer.domElement );
+
     // add light
     var light = new THREE.DirectionalLight();
     light.position.set(1200, 1000, 1200);
@@ -60,6 +67,15 @@ function init() {
     // call the render function
     render();
 }
+
+function createContentHTML(){
+    var contentDiv = document.createElement( 'div' );
+    contentDiv.className = 'info';
+    var contentLayer = new THREE.CSS2DObject( contentDiv );
+    contentLayer.position.set( 300, 0, 0 );
+    scene.add(contentLayer)
+}
+
 function createGeometryFromMap() {
     var depth = 512;
     var width = 512;
@@ -133,18 +149,9 @@ function addControls(controlObject) {
 }
 function render() {
     renderer.render(scene, camera);
+    labelRenderer.render( scene, camera );
     requestAnimationFrame(render);
     scene.rotation.y += 10 / 10000;
-}
-
-function createContentHTML(){
-    var contentDiv = document.createElement( 'div' );
-    contentDiv.className = 'info';
-    contentDiv.textContent = 'MDE';
-    contentDiv.style.marginTop = '-1em';
-    var contentLayer = new THREE.CSS2DObject( contentDiv );
-    contentLayer.position.set( 0, 20, 0 );
-    scene.add(contentLayer)
 }
 
 // calls the init function when the window is done loading.
