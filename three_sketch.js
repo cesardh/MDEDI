@@ -86,13 +86,13 @@ function createGeometryFromMap() {
     var width = 512;
     var spacingX = 3;
     var spacingZ = 3;
-    var heightOffset = 2;
+    var heightOffset = 1;
     var canvas = document.createElement('canvas');
     canvas.width = 512;
     canvas.height = 512;
     var ctx = canvas.getContext('2d');
     var img = new Image();
-    img.src = "./DeathValley.heightmap.jpg";
+    img.src = "./medellin-heightmap.png";
     img.onload = function () {
         // draw on canvas
         ctx.drawImage(img, 0, 0, 512, 512);
