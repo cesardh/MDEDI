@@ -74,6 +74,11 @@ function createContentHTML(){
     var contentLayer = new THREE.CSS2DObject( contentDiv );
     contentLayer.position.set( 300, 0, 0 );
     scene.add(contentLayer)
+
+    var contentDiv = document.getElementById( 'tooltip' );
+    var contentLayer = new THREE.CSS2DObject( contentDiv );
+    contentLayer.position.set( 500, 50, 600 );
+    scene.add(contentLayer)
 }
 
 function createGeometryFromMap() {

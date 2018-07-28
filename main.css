@@ -33,22 +33,32 @@ button{
     cursor: pointer;
 }
 
-.info{
+.info, .info2{
     position: absolute;
     width: 20px;
     height: 20px;
-    background: rgba(0, 0, 50, 0.507);
+    background: rgb(255, 217, 0);
     color: white;
     font-size: 100px;
     border-radius: 50%;
 }
-.info:hover{
+.info2 img{
+    display: none;
+    position: absolute;
+    width: 200px;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%)
+}
+.info:hover, .info2:hover{
     background: white;
     cursor: pointer;
 }
 .info:hover::before{
     display: block;
     bottom: 30px;
+} .info2:hover img{
+    display: block
 }
 .info::before{
     content: "Hola soy un punto en el mapa :D";
@@ -72,13 +82,15 @@ button{
     z-index: 10;
 }
 
-#metodologia{
+#metodologia, #audio{
     position: absolute;
     width: 100vw;
     height: 100vh;
     background: white;
     padding: 30px;
+    transition: top 200ms ease-in-out;
     top: 120vh;
-} #metodologia:active{
+    
+} #metodologia:active, #audio:active{
     top: 0;
 }
