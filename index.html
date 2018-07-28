@@ -5,12 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MDE Discursos Invisibles</title>
+    <link rel="stylesheet" href="./main.css">
     <style>
         body { margin: 0; }
         canvas { width: 100%; height: 100% }
     </style>
 </head>
 <body>
+
+    <div id="contenedor_interfaz">
+
+        <div id="control">
+            <h1 class="titulo">MDE: DISCURSOS INVISIBLES</h1>
+            <br>
+            <button id="btn-cita" >Citación</button>
+            <button id="btn-video" >Video</button>
+            <button id="btn-audio" >Audio</button>
+            <button id="btn-foto" >foto</button>
+            <button id="btn-metodologia" >Metodología</button>
+            <button id="btn-opinion" >Opinión</button>
+
+        </div>
+
+        <div id="contenido">
+        </div>
+
+    </div>
+
     <script src="./chroma.js"></script>
     <script src="./dat.gui.min.js"></script>
     <script src="./three.min.js"></script>

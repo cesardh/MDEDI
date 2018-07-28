@@ -34,11 +34,14 @@ function init() {
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 10000);
     // create a render, sets the background color and the size
     renderer = new THREE.WebGLRenderer();
-    renderer.setClearColor(0x000000, 1.0);
+    renderer.setClearColor(0x052222, 0);
     renderer.setSize(window.innerWidth, window.innerHeight);
     // add light
     var light = new THREE.DirectionalLight();
-    light.position.set(1200, 1200, 1200);
+    light.position.set(1200, 1000, 1200);
+    scene.add(light);
+
+    var light = new THREE.AmbientLight(0x207070);
     scene.add(light);
     // position and point the camera to the center of the scene
     camera.position.x = 1200;
@@ -53,6 +56,7 @@ function init() {
     };
     addControls(control);
     createGeometryFromMap();
+    createContentHTML();
     // call the render function
     render();
 }
@@ -110,7 +114,7 @@ function createGeometryFromMap() {
         var xMax = geom.boundingBox.max.x;
         var mesh = new THREE.Mesh(geom, new THREE.MeshLambertMaterial({
             vertexColors: THREE.FaceColors,
-            color: 0x666666,
+            color: 0xff6600,
             shading: THREE.NoShading
         }));
         mesh.translateX(-xMax / 2);
@@ -132,5 +136,16 @@ function render() {
     requestAnimationFrame(render);
     scene.rotation.y += 10 / 10000;
 }
+
+function createContentHTML(){
+    var contentDiv = document.createElement( 'div' );
+    contentDiv.className = 'info';
+    contentDiv.textContent = 'MDE';
+    contentDiv.style.marginTop = '-1em';
+    var contentLayer = new THREE.CSS2DObject( contentDiv );
+    contentLayer.position.set( 0, 20, 0 );
+    scene.add(contentLayer)
+}
+
 // calls the init function when the window is done loading.
 window.onload = init;
